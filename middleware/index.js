@@ -1,5 +1,6 @@
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
+var Review = require("../models/review");
 // All the middleware
 var middlewareObj = {};
 
@@ -11,7 +12,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
 				req.flash("error", "Campground not found");
 				res.redirect("back");
 			} else {
-				if(foundCampground.author.id.equals(req.user._id)){
+				if(foundCampground.author.id.equals(req.user._id) || req.user.isAdmin){
 					next();
 				} else {
 					req.flash("error", "You don't have permission to do that");
@@ -33,7 +34,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
 				req.flash('error', 'Comment does not exist');
 				res.redirect("back");
 			} else {
-				if(foundComment.author.id.equals(req.user._id)){
+				if(foundComment.author.id.equals(req.user._id) || req.user.isAdmin){
 					next();
 				} else {
 					req.flash("error", "You do not have permission to do that");
@@ -54,7 +55,7 @@ middlewareObj.checkReviewOwnership = function(req, res, next) {
                 res.redirect("back");
             }  else {
                 // does user own the comment?
-                if(foundReview.author.id.equals(req.user._id)) {
+                if(foundReview.author.id.equals(req.user._id) || req.user.isAdmin) {
                     next();
                 } else {
                     req.flash("error", "You don't have permission to do that");
