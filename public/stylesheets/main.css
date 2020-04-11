@@ -23,3 +23,9 @@
 .checked {
     color: orange;
 }
+.register-label {
+	text-align: center
+}
+.register-form {
+	width: 30%; margin: 25px auto;
+}
