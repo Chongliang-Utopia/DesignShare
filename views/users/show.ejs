@@ -6,31 +6,76 @@
 				<a><%= user.firstName + " " + user.lastName %></a>
 			</h3>
 			<div class="thumbnail">
-				<img class="col-md-8" src="<%= user.avatar %>" alt="user profile image">
+				<img style="padding-bottom: 20px" class="col-md-8" src="<%= user.avatar %>" alt="user profile image">
 				<div class="caption-full">
 					<p>
-						Contact Email: <a href="mailto:<%= user.email %>"><%= user.email %> </a>
+						My Email:
 					</p>
 					<p>
-					A follower of atomic design philosophy. Designer of applications. Daddy of Neomorphism trend
+						<a href="mailto:<%= user.email %>"><%= user.email %> </a>
+					</p>
+					<p>
+						My Location:
 					</p>
 				</div>
-				
+				<div id="map"></div>
 			</div>
 		</div>
 		<div class="col-md-8">
 			<div class="caption-full" style="text-align: left">
-				<h3>
-				<%= user.username %> 's design works
+				<h3 style="text-align: center">
+				My design works
 				</h3>
-				<ul>
-					<% campgrounds.forEach(function(campground) { %>
-						<li><a href="/campgrounds/<%=campground.id%>"><%= campground.name %></a></li>
-					<% }) %>
-				</ul>
+				
+				<% campgrounds.forEach(function(campground){ %>
+					<div class="col-md-6 col-sm-6">
+						<div class="thumbnail">
+							<img src="<%= campground.image %>">
+							<div class="caption">
+								<h4>
+									<%= campground.name %>
+								</h4>
+							</div>
+							<p>
+								<a href="/campgrounds/<%= campground._id %>" class="btn btn-info">More...</a>
+							</p>
+						</div>
+					</div>
+				<% }); %>
+				
 			</div>
 			
 		</div>
 	</div>
 </div>
+
+<script>
+  function initMap() {
+    var lat = <%= user.lat %>;
+    var lng = <%= user.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= user.name %><br />
+      <%= user.location %></strong>
+      <p><%= user.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3W6AnPjPRBAAvHEzMuId1L4_bNpIMtuY&callback=initMap"></script>
+
 <%- include("../partials/footer") %>

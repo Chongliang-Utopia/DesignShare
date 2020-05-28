@@ -3,6 +3,17 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Campground = require("../models/campground");
+var NodeGeocoder = require('node-geocoder');
+
+var options = {
+  provider: 'google',
+  httpAdapter: 'https',
+  apiKey: process.env.GEOCODER_API_KEY,
+  formatter: null
+};
+ 
+var geocoder = NodeGeocoder(options);
+
 
 //Root route
 router.get("/", function(req, res){
@@ -17,22 +28,35 @@ router.get("/register", function(req, res){
 
 //Handle sign up logic
 router.post("/register", function(req, res){
-	var newUser = new User({username: req.body.username,
-							firstName: req.body.firstName,
-						    lastName: req.body.lastName,
-						    email: req.body.email,
-						    avatar: req.body.avatar});
-	if (req.body.adminCode === "secret"){
-		newUser.isAdmin = true;
-	}
-	User.register(newUser, req.body.password, function(err, user){
-		if (err){
-			req.flash("error", err.message);
-			return res.redirect("/register");
+	
+	geocoder.geocode(req.body.location, function (err, data) {
+		if (err || !data.length) {
+		  req.flash('error', 'Invalid address');
+		  return res.redirect('back');
 		}
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcome, " + user.username);
-			res.redirect("/campgrounds");
+		var lat = data[0].latitude;
+		var lng = data[0].longitude;
+		var location = data[0].formattedAddress;
+		var newUser = new User({username: req.body.username,
+								firstName: req.body.firstName,
+								lastName: req.body.lastName,
+								email: req.body.email,
+								avatar: req.body.avatar,
+								location: location,
+								lat: lat,
+								lng: lng});
+		if (req.body.adminCode === "secret"){
+			newUser.isAdmin = true;
+		}
+		User.register(newUser, req.body.password, function(err, user){
+			if (err){
+				req.flash("error", err.message);
+				return res.redirect("/register");
+			}
+			passport.authenticate("local")(req, res, function(){
+				req.flash("success", "Welcome, " + user.username);
+				res.redirect("/campgrounds");
+			});
 		});
 	});
 });

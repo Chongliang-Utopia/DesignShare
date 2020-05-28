@@ -7,15 +7,6 @@ var NodeGeocoder = require('node-geocoder');
 
 //var client = new recombee.ApiClient('none111-dev', '8Hrr506FYrigZC01zdg3R4BC8xpdjcgScFX1KzkqVymZ5seaYw36eCe5rdredKHn');
 
-var options = {
-  provider: 'google',
-  httpAdapter: 'https',
-  apiKey: process.env.GEOCODER_API_KEY,
-  formatter: null
-};
- 
-var geocoder = NodeGeocoder(options);
-
 
 //INDEX - show all campgrounds
 router.get("/", function(req, res){
@@ -57,34 +48,16 @@ router.post("/", middleware.isLogginIn, function(req, res){
       id: req.user._id,
       username: req.user.username
   }
-  geocoder.geocode(req.body.location, function (err, data) {
-    if (err || !data.length) {
-      req.flash('error', 'Invalid address');
-      return res.redirect('back');
-    }
-    var lat = data[0].latitude;
-    var lng = data[0].longitude;
-    var location = data[0].formattedAddress;
-    var newCampground = {name: name, image: image, price: price, description: desc, author:author, location: location, lat: lat, lng: lng};
+    var newCampground = {name: name, image: image, price: price, description: desc, author:author};
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
             //redirect back to campgrounds page
-            console.log(newlyCreated);
-			//===============================================================
-			// client.send(new rqs.AddPurchase(`${newlyCreated.author.id}`, `${newlyCreated._id}`, {cascadeCreate: true}), function(err, res){
-			// 	if (err) {
-			// 		console.log(err);
-			// 	} else {
-			// 	}
-			// });
-			// raccoon.liked('${newlyCreated.author.id}', '${newlyCreated._id}', options).then(() => {
-			// });		
+            console.log(newlyCreated);	
             res.redirect("/campgrounds");
         }
-    });
   });
 });
 
@@ -151,19 +124,12 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
   });
 });
 
-// DESTROY campground route
 // DESTROY CAMPGROUND ROUTE
 router.delete("/:id", middleware.checkCampgroundOwnership, function (req, res) {
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
             res.redirect("/campgrounds");
         } else {
-            // deletes all comments associated with the campground
-            Comment.remove({"_id": {$in: campground.comments}}, function (err) {
-                if (err) {
-                    console.log(err);
-                    return res.redirect("/campgrounds");
-                }
                 // deletes all reviews associated with the campground
                 Review.remove({"_id": {$in: campground.reviews}}, function (err) {
                     if (err) {
@@ -175,7 +141,6 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function (req, res) {
                     req.flash("success", "Campground deleted successfully!");
                     res.redirect("/campgrounds");
                 });
-            });
         }
     });
 });

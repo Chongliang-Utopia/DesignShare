@@ -9,13 +9,11 @@ var express     = require("express"),
 	LocalStrategy = require("passport-local"),
 	methodOverride = require("method-override"),
     Campground  = require("./models/campground"),
-	Comment     = require("./models/comment"),
-	User        = require("./models/user"),
-    seedDB      = require("./seeds")
+	User        = require("./models/user")
+    // seedDB      = require("./seeds")
 
 //Requiring routes
-var commentRoutes = require("./routes/comments"),
-	reviewRoutes     = require("./routes/reviews"),
+var reviewRoutes     = require("./routes/reviews"),
 	campgroundRoutes = require("./routes/campgrounds"),
 	indexRoutes = require("./routes/index")
 
@@ -58,7 +56,6 @@ app.use(function(req, res, next){
 
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 
@@ -80,6 +77,6 @@ app.use("/campgrounds/:id/reviews", reviewRoutes);
 // });
 
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 4000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
