@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h3 style="text-align: center">
+				<a><%= user.firstName + " " + user.lastName %></a>
+			</h3>
+			<div class="thumbnail">
+				<img class="col-md-8" src="<%= user.avatar %>" alt="user profile image">
+				<div class="caption-full">
+					<p>
+						Contact Email: <a href="mailto:<%= user.email %>"><%= user.email %> </a>
+					</p>
+					<p>
+					A follower of atomic design philosophy. Designer of applications. Daddy of Neomorphism trend
+					</p>
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="caption-full" style="text-align: left">
+				<h3>
+				<%= user.username %> 's design works
+				</h3>
+				<ul>
+					<% campgrounds.forEach(function(campground) { %>
+						<li><a href="/campgrounds/<%=campground.id%>"><%= campground.name %></a></li>
+					<% }) %>
+				</ul>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<%- include("../partials/footer") %>

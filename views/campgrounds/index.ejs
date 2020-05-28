@@ -2,22 +2,28 @@
 
 
 <div class="container">
-	<header class="jumbotron">
+	<header class="jumbotron" style="background-image: url(https://media.istockphoto.com/photos/abstract-white-background-picture-id995719692?k=6&m=995719692&s=612x612&w=0&h=twmGvY6u8zvagees5Hp5KQBSYkSduJbMF4pXqmAWEjE=); background-size: 100%;">
 		<div class="container">
-			<h1>Welcome to Yelpcamp!</h1>
+			<h1>Welcome to Palette-Share!</h1>
 			<p>
-				View our hand-picked campgrounds from all over the world
+				A community for designers to share their creative ideas. Come and join us!
 			</p>
-			<p>
-				<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add new campground</a>
+			<p style="margin: 30px 0px 0px 0px">
+				<a class="btn btn-info btn-lg" href="/campgrounds/new">Post your design</a>
 			</p>
 			<p>
 				<form action="/campgrounds" method="GET" class="form-inline">
 					<div class="form-group">
-						<input type="text" name="search" placeholder="Campground search..." class="form-control">
+						<input type="text" name="search" placeholder="Search..." class="form-control">
 						<input type="submit" value="Search"  class="btn btn-default">
 					</div>
 				</form>
+				<!-- Test -->
+				<!-- <form action="/campgrounds" method="GET" class="form-inline">
+					<div class="form-group">
+						<input type="submit" name="recommend"value="Recommend"  class="btn btn-default">
+					</div>
+				</form> -->
 			</p>
 		</div>
 	</header>
@@ -50,7 +56,7 @@
 						<% } %>
 					</div>
 					<p>
-						<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+						<a href="/campgrounds/<%= campground._id %>" class="btn btn-info">More...</a>
 					</p>
 				</div>
 			</div>

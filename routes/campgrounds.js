@@ -4,7 +4,9 @@ var Campground = require("../models/campground");
 var middleware = require("../middleware");
 var Review = require("../models/review");
 var NodeGeocoder = require('node-geocoder');
- 
+
+//var client = new recombee.ApiClient('none111-dev', '8Hrr506FYrigZC01zdg3R4BC8xpdjcgScFX1KzkqVymZ5seaYw36eCe5rdredKHn');
+
 var options = {
   provider: 'google',
   httpAdapter: 'https',
@@ -30,7 +32,9 @@ router.get("/", function(req, res){
 			  res.render("campgrounds/index",{campgrounds:allCampgrounds, noMatch: noMatch});
 		   }
 		});
-	} else {
+	} 
+	
+	else {
 		// Get all campgrounds from DB
 		Campground.find({}, function(err, allCampgrounds){
 		   if(err){
@@ -69,6 +73,15 @@ router.post("/", middleware.isLogginIn, function(req, res){
         } else {
             //redirect back to campgrounds page
             console.log(newlyCreated);
+			//===============================================================
+			// client.send(new rqs.AddPurchase(`${newlyCreated.author.id}`, `${newlyCreated._id}`, {cascadeCreate: true}), function(err, res){
+			// 	if (err) {
+			// 		console.log(err);
+			// 	} else {
+			// 	}
+			// });
+			// raccoon.liked('${newlyCreated.author.id}', '${newlyCreated._id}', options).then(() => {
+			// });		
             res.redirect("/campgrounds");
         }
     });
@@ -90,6 +103,13 @@ router.get("/:id", function (req, res) {
         if (err || !foundCampground) {
             console.log(err);
         } else {
+			//===============================================================
+			// client.send(new rqs.AddDetailView(`${foundCampground.author.id}`, `${foundCampground._id}`, {cascadeCreate: true}), function(err, res){
+			// 	if (err) {
+			// 		console.log(err);
+			// 	} else {
+			// 	}
+			// });
             //render show template with that campground
             res.render("campgrounds/show", {campground: foundCampground});
         }

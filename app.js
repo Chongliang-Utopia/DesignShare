@@ -61,6 +61,25 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
+
+//================================================================================================================
+// var userIds = [];
+// var itemIds = [];
+// var purchases = [];
+// var data = Campground.find({}, function(err, allCampgrounds){
+// 	if(err){
+// 		console.log(err);
+// 	} else {
+// 		// console.log(allCampgrounds);
+// 		allCampgrounds.forEach((camp) => {
+// 			userIds.push(`${camp.author.id}`);
+// 			itemIds.push(`${camp._id}`);
+// 			client.send(new rqs.AddPurchase(`${camp.author.id}`, `${camp._id}`, {cascadeCreate: true}));
+// 		});
+// 	}
+// });
+
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
