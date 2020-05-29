@@ -6,7 +6,7 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
 // SCHEMA SETUP
-var campgroundSchema = new mongoose.Schema({
+var designPieceSchema = new mongoose.Schema({
     name: String,
     price: Number,
     image: String,
@@ -36,4 +36,4 @@ var campgroundSchema = new mongoose.Schema({
     ]
 });
 
-module.exports = mongoose.model("Campground", campgroundSchema);
+module.exports = mongoose.model("DesignPiece", designPieceSchema);

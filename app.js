@@ -8,13 +8,13 @@ var express     = require("express"),
 	passport    = require("passport"),
 	LocalStrategy = require("passport-local"),
 	methodOverride = require("method-override"),
-    Campground  = require("./models/campground"),
+    DesignPiece  = require("./models/designPiece"),
 	User        = require("./models/user")
     // seedDB      = require("./seeds")
 
 //Requiring routes
 var reviewRoutes     = require("./routes/reviews"),
-	campgroundRoutes = require("./routes/campgrounds"),
+	designPieceRoutes = require("./routes/designPieces"),
 	indexRoutes = require("./routes/index")
 
 // mongoose.connect("mongodb://localhost/yelp_camp_v3");
@@ -55,26 +55,8 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/reviews", reviewRoutes);
-
-
-//================================================================================================================
-// var userIds = [];
-// var itemIds = [];
-// var purchases = [];
-// var data = Campground.find({}, function(err, allCampgrounds){
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		// console.log(allCampgrounds);
-// 		allCampgrounds.forEach((camp) => {
-// 			userIds.push(`${camp.author.id}`);
-// 			itemIds.push(`${camp._id}`);
-// 			client.send(new rqs.AddPurchase(`${camp.author.id}`, `${camp._id}`, {cascadeCreate: true}));
-// 		});
-// 	}
-// });
+app.use("/designPieces", designPieceRoutes);
+app.use("/designPieces/:id/reviews", reviewRoutes);
 
 
 app.listen(process.env.PORT || 4000, function(){

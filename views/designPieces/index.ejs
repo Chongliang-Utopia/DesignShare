@@ -9,17 +9,17 @@
 				A community for designers to share their creative ideas. Come and join us!
 			</p>
 			<p style="margin: 30px 0px 0px 0px">
-				<a class="btn btn-info btn-lg" href="/campgrounds/new">Post your design</a>
+				<a class="btn btn-info btn-lg" href="/designPieces/new">Post your design</a>
 			</p>
 			<p>
-				<form action="/campgrounds" method="GET" class="form-inline">
+				<form action="/designPieces" method="GET" class="form-inline">
 					<div class="form-group">
 						<input type="text" name="search" placeholder="Search..." class="form-control">
 						<input type="submit" value="Search"  class="btn btn-default">
 					</div>
 				</form>
 				<!-- Test -->
-				<!-- <form action="/campgrounds" method="GET" class="form-inline">
+				<!-- <form action="/designPiece" method="GET" class="form-inline">
 					<div class="form-group">
 						<input type="submit" name="recommend"value="Recommend"  class="btn btn-default">
 					</div>
@@ -37,26 +37,26 @@
 				</h3>
 			<% } %>
 		</div>
-		<% campgrounds.forEach(function(campground){ %>
+		<% designPieces.forEach(function(designPiece){ %>
 			<div class="col-md-3 col-sm-6">
 				<div class="thumbnail">
-					<img src="<%= campground.image %>">
+					<img src="<%= designPiece.image %>">
 					<div class="caption">
 						<h4>
-							<%= campground.name %>
+							<%= designPiece.name %>
 						</h4>
-						<% if (campground.rating === 0) { %>
+						<% if (designPiece.rating === 0) { %>
 						<em>No reviews yet.</em>
 						<% } else { %>
 						<span class="fa fa-star checked"></span>
-						<span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
-						<span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
-						<span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
-						<span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+						<span class="fa fa-star <% if (designPiece.rating > 1.5) { %> checked <% } %>"></span>
+						<span class="fa fa-star <% if (designPiece.rating > 2.5) { %> checked <% } %>"></span>
+						<span class="fa fa-star <% if (designPiece.rating > 3.5) { %> checked <% } %>"></span>
+						<span class="fa fa-star <% if (designPiece.rating > 4.5) { %> checked <% } %>"></span>
 						<% } %>
 					</div>
 					<p>
-						<a href="/campgrounds/<%= campground._id %>" class="btn btn-info">More...</a>
+						<a href="/designPieces/<%= designPiece._id %>" class="btn btn-info">More...</a>
 					</p>
 				</div>
 			</div>
