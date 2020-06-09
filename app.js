@@ -1,21 +1,20 @@
 require('dotenv').config();
 
-var express     = require("express"),
-    app         = express(),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-	flash       = require("connect-flash"),
-	passport    = require("passport"),
-	LocalStrategy = require("passport-local"),
-	methodOverride = require("method-override"),
-    DesignPiece  = require("./models/designPiece"),
-	User        = require("./models/user")
-    // seedDB      = require("./seeds")
+var express     = require("express");
+var app         = express();
+var bodyParser  = require("body-parser");
+var mongoose    = require("mongoose");
+var	flash       = require("connect-flash");
+var	passport    = require("passport");
+var	LocalStrategy = require("passport-local");
+var	methodOverride = require("method-override");
+var DesignPiece  = require("./models/designPiece");
+var	User        = require("./models/user");
 
 //Requiring routes
-var reviewRoutes     = require("./routes/reviews"),
-	designPieceRoutes = require("./routes/designPieces"),
-	indexRoutes = require("./routes/index")
+var reviewRoutes     = require("./routes/reviews");
+var	designPieceRoutes = require("./routes/designPieces");
+var indexRoutes = require("./routes/index");
 
 // mongoose.connect("mongodb://localhost/yelp_camp_v3");
 mongoose.connect("mongodb+srv://Chongliang:tcl900814@cluster0-2byrq.mongodb.net/test?retryWrites=true&w=majority", {
