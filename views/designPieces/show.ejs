@@ -3,11 +3,19 @@
 	<div class="row">
 		<div class="col-md-3">
 			
-			<div class="list-group">
-				<li class="list-group-item active">Info 1</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
+			<div class="thumbnail">
+				<h4 class="user-profile" >
+					<a>Author : <%= user.firstName + " " + user.lastName %></a>
+				</h4>
+				<img style="padding-bottom: 20px" class="col-md-8" src="<%= user.avatar %>" alt="user profile image">
+				<div class="caption-full">
+				<h5 class="user-profile" >
+					<a href="/users/<%=designPiece.author.id%>">
+				Interested in this designer ?</a>
+				</h5>
+				</div>
 			</div>
+			
 		</div>
 		<div class="col-md-9">
 			<div class="thumbnail">
@@ -137,7 +145,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">DesignPiece likes: <%= designPiece.likes.length %></h4>
+                <h4 class="modal-title">All likes: <%= designPiece.likes.length %></h4>
             </div>
             <div class="modal-body">
                 <table class="table table-striped">

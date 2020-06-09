@@ -1,6 +1,5 @@
 <%- include("../partials/header") %>
 
-
 <div class="container">
 	<header class="jumbotron" style="background-image: url(https://media.istockphoto.com/photos/abstract-white-background-picture-id995719692?k=6&m=995719692&s=612x612&w=0&h=twmGvY6u8zvagees5Hp5KQBSYkSduJbMF4pXqmAWEjE=); background-size: 100%;">
 		<div class="container">
@@ -18,18 +17,26 @@
 						<input type="submit" value="Search"  class="btn btn-default">
 					</div>
 				</form>
-				<!-- Test -->
-				<!-- <form action="/designPiece" method="GET" class="form-inline">
-					<div class="form-group">
-						<input type="submit" name="recommend"value="Recommend"  class="btn btn-default">
-					</div>
-				</form> -->
 			</p>
 		</div>
 	</header>
 	
-
-	<div class="row text-center" style="display:flex; flex-wrap: wrap">
+	<!-- Filter button -->
+	<div id="filter-button"  class="btn-group">
+	  <button type="button" class="btn btn-default">Filter</button>
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="caret"></span>
+		<span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <ul class="dropdown-menu">
+		<li><a href="/designPieces?filter=graphic">Graghic Design</a></li>
+		<li><a href="/designPieces?filter=UI">UI Design</a></li>
+		<li><a href="/designPieces">Show All</a></li>
+		<li role="separator" class="divider"></li>
+		<li><a href="/designPieces?sort=rating">Rating high to low</a></li>
+	  </ul>
+	</div>
+	<div id="showpage" class="row text-center">
 		<div class="col-md-12">
 			<% if(noMatch != undefined) { %>
 				<h3>
@@ -63,5 +70,6 @@
 		<% }); %>
 	</div>	
 </div>
+
 
 <%- include("../partials/footer") %>

@@ -4,6 +4,7 @@ var DesignPiece = require("../models/designPiece");
 var middleware = require("../middleware");
 var Review = require("../models/review");
 var NodeGeocoder = require('node-geocoder');
+var User = require("../models/user");
 
 //var client = new recombee.ApiClient('none111-dev', '8Hrr506FYrigZC01zdg3R4BC8xpdjcgScFX1KzkqVymZ5seaYw36eCe5rdredKHn');
 
@@ -24,6 +25,36 @@ router.get("/", function(req, res){
 		   }
 		});
 	} 
+	else if (req.query.sort) {
+		// sort all DesignPiece from DB
+		DesignPiece.find({}).sort({ rating : -1}).exec(function(err, allDesignPieces){
+		   if(err){
+			   console.log(err);
+		   } else {
+			  res.render("designPieces/index",{designPieces:allDesignPieces, noMatch: noMatch});
+		   }
+		});
+	}
+	
+	else if (req.query.filter) {
+		if (req.query.filter == "graphic") {
+			DesignPiece.find({category : "graphic"}, function(err, allDesignPieces){
+			   if(err){
+				   console.log(err);
+			   } else {
+				  res.render("designPieces/index",{designPieces:allDesignPieces, noMatch: noMatch});
+			   }
+			});
+		} else if (req.query.filter == "UI") {
+			DesignPiece.find({category : "UI"}, function(err, allDesignPieces){
+			   if(err){
+				   console.log(err);
+			   } else {
+				  res.render("designPieces/index",{designPieces:allDesignPieces, noMatch: noMatch});
+			   }
+			});
+		}
+	}
 	
 	else {
 		// Get all DesignPiece from DB
@@ -44,11 +75,12 @@ router.post("/", middleware.isLogginIn, function(req, res){
   var image = req.body.image;
   var price = req.body.price;
   var desc = req.body.description;
+  var category = req.body.category;
   var author = {
       id: req.user._id,
       username: req.user.username
   }
-    var newDesignPiece = {name: name, image: image, price: price, description: desc, author:author};
+    var newDesignPiece = {name: name, image: image, price: price, description: desc, category: category, author:author};
     // Create a new designPiece and save to DB
     DesignPiece.create(newDesignPiece, function(err, newlyCreated){
         if(err){
@@ -76,15 +108,13 @@ router.get("/:id", function (req, res) {
         if (err || !foundDesignPiece) {
             console.log(err);
         } else {
-			//===============================================================
-			// client.send(new rqs.AddDetailView(`${foundDesignPiece.author.id}`, `${foundDesignPiece._id}`, {cascadeCreate: true}), function(err, res){
-			// 	if (err) {
-			// 		console.log(err);
-			// 	} else {
-			// 	}
-			// });
-            //render show template with that
-            res.render("designPieces/show", {designPiece: foundDesignPiece});
+			User.findById(foundDesignPiece.author.id, function(err, user) {
+				if (err) {
+					console.log(err);
+				} else {
+					res.render("designPieces/show", {designPiece: foundDesignPiece, user: user});
+				}
+			})
         }
     });
 });
@@ -170,5 +200,6 @@ router.post("/:id/like", middleware.isLogginIn, function (req, res) {
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
+
 
 module.exports = router;

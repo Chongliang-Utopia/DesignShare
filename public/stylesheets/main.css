@@ -29,3 +29,12 @@
 .register-form {
 	width: 30%; margin: 25px auto;
 }
+#filter-button {
+	margin-bottom : 10px;
+}
+#showpage {
+	display:flex; flex-wrap: wrap;
+}
+.user-profile {
+	text-align: center;
+}

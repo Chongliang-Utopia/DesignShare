@@ -8,7 +8,7 @@ mongoose.set('useUnifiedTopology', true);
 // SCHEMA SETUP
 var designPieceSchema = new mongoose.Schema({
     name: String,
-    price: Number,
+    category: String,
     image: String,
     description: String,
     author: {
