@@ -17,8 +17,10 @@ To see the app in action, go to https://design-share.herokuapp.com
 
 <strong>•	Manage design posts with basic functionalities:</strong>
 <p>Create, edit and delete posts and comments</p>
+<p>Rate, like and review posts</p>
 <p>Upload design photos</p>
 <p>Search existing posts</p>
+<p>Sort and filter posts according to categories and rating scores</p>
 
 <strong>•	Flash messages responding to users' interaction with the app</strong>
 <strong>•	Responsive web design</strong>
