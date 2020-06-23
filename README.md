@@ -22,9 +22,9 @@ To see the app in action, go to https://design-share.herokuapp.com
 <p>Search existing posts</p>
 <p>Sort and filter posts according to categories and rating scores</p>
 
-<strong>•	Flash messages responding to users' interaction with the app</strong>
-<strong>•	Responsive web design</strong>
-
+<p><strong>•	Flash messages responding to users' interaction with the app</strong></p>
+<p><strong>•	Responsive web design</strong></p>
+<p>
 <strong>• Custom Enhancements</strong>
 
 # Getting Started
