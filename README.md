@@ -22,10 +22,10 @@ To see the app in action, go to https://design-share.herokuapp.com
 <p>Search existing posts</p>
 <p>Sort and filter posts according to categories and rating scores</p>
 
-<p><strong>•	Flash messages responding to users' interaction with the app</strong></p>
-<p><strong>•	Responsive web design</strong></p>
+<p>**•	Flash messages responding to users' interaction with the app</strong></p>
+<p>**•	Responsive web design**</p>
 <p>
-<strong>• Custom Enhancements</strong>
+**• Custom Enhancements</strong>
 
 # Getting Started
 
@@ -43,22 +43,22 @@ or
 
     yarn install
 # Built with
-<strong>•	Front-end</strong>
-<p>-ejs</p>
-<p>-Bootstrap</p>
-<p>-Google Maps APIs</p>
+- Front-end
+  - ejs
+  - Bootstrap
+  - Google Maps APIs
 
-<strong>•	Back-end</strong>
-<p>-express</p>
-<p>-mongoDB</p>
-<p>-mongoose</p>
-<p>-passport</p>
-<p>-passport-local</p>
-<p>-method-override</p>
-<p>-geocoder</p>
-<p>-connect-flash</p>
+- Back-end
+  - express
+  - mongoDB
+  - mongoose
+  - passport
+  - passport-local
+  - method-override
+  - geocoder
+  - connect-flash
 
 # Platforms
-<p>-Heroku</p>
-<p>-Goormide</p>
+- Heroku
+- Goormide
 
