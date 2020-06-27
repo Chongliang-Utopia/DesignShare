@@ -44,19 +44,19 @@ or
 ```   
 # Built with
 - **Front-end**
-  - ejs
+  - Ejs
   - Bootstrap
   - Google Maps APIs
 
 - **Back-end**
-  - express
-  - mongoDB
-  - mongoose
-  - passport
-  - passport-local
-  - method-override
-  - geocoder
-  - connect-flash
+  - Express
+  - MongoDB
+  - Mongoose
+  - Passport
+  - Passport-local
+  - Method-override
+  - Geocoder
+  - Connect-flash
 
 # Platforms
 - Heroku
