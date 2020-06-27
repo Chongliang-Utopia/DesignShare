@@ -6,26 +6,25 @@ Live Demo
 To see the app in action, go to https://design-share.herokuapp.com 
 # Features
 
-<strong>•	Authentication:</strong>
-<p>User login with username and password</p>
-<p>Admin sign-up with admin code</p>
+- **Authentication:**
+  - User login with username and password
+  - Admin sign-up with admin code
 
-<strong>•	Authorization:</strong>
-<p>One cannot manage posts and view user profile without being authenticated</p>
-<p>One cannot edit or delete posts and comments created by other users</p>
-<p>Admin can manage all posts and comments</p>
+- **Authorization:**
+  - One cannot manage posts and view user profile without being authenticated
+  - One cannot edit or delete posts and comments created by other users
+  - Admin can manage all posts and comments
 
-<strong>•	Manage design posts with basic functionalities:</strong>
-<p>Create, edit and delete posts and comments</p>
-<p>Rate, like and review posts</p>
-<p>Upload design photos</p>
-<p>Search existing posts</p>
-<p>Sort and filter posts according to categories and rating scores</p>
+- **Manage design posts with basic functionalities:**
+  - Create, edit and delete posts and comments
+  - Rate, like and review posts
+  - Upload design photos
+  - Search existing posts
+  - Sort and filter posts according to categories and rating scores
 
-<p>**•	Flash messages responding to users' interaction with the app</strong></p>
-<p>**•	Responsive web design**</p>
-<p>
-**• Custom Enhancements</strong>
+- **Flash messages responding to users' interaction with the app**
+- **Responsive web design**
+- **Custom Enhancements**
 
 # Getting Started
 
@@ -43,12 +42,12 @@ or
 
     yarn install
 # Built with
-- Front-end
+- **Front-end**
   - ejs
   - Bootstrap
   - Google Maps APIs
 
-- Back-end
+- **Back-end**
   - express
   - mongoDB
   - mongoose
