@@ -2,7 +2,7 @@
 An interactive web application that allows designers to post their works by uploading images, receive comments, ratings and likes.
 
 Live Demo:
-To see the app in action, go to https://design-share.herokuapp.com 
+To see the app in action,[heroku link](https://design-share.herokuapp.com)
 # Features
 
 - **Authentication:**
@@ -26,20 +26,22 @@ To see the app in action, go to https://design-share.herokuapp.com
 - **Custom Enhancements**
 
 # Getting Started
-
+```
     This app contains API secrets and passwords that have been hidden deliberately, so the app cannot be run with its features on your local machine. However, feel free to clone this repository if necessary.
-
+```
 Clone or download this repository
-
+```
 git clone https://github.com/Chongliang-Utopia/App_Design_Share.git
+```
 
 Install dependencies
-
+```
     npm install
-
+```
 or
-
+```
     yarn install
+```   
 # Built with
 - **Front-end**
   - ejs
