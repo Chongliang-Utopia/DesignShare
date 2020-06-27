@@ -2,7 +2,7 @@
 An interactive web application that allows designers to post their works by uploading images, receive comments, ratings and likes.
 
 Live Demo:
-To see the app in action,[heroku link](https://design-share.herokuapp.com)
+To see the app in action, [heroku link](https://design-share.herokuapp.com)
 # Features
 
 - **Authentication:**
