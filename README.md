@@ -1,8 +1,7 @@
 # App_Design_Share
-A full-stack web development
-<p>An interactive web application that allows designers to post their works by uploading images and receive comments, ratings and likes.</p>
-Live Demo
+An interactive web application that allows designers to post their works by uploading images and receive comments, ratings and likes.
 
+Live Demo:
 To see the app in action, go to https://design-share.herokuapp.com 
 # Features
 
