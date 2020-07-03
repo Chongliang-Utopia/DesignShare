@@ -1,5 +1,5 @@
 # App_Design_Share
-An interactive web application that allows designers to post their works by uploading images, receive comments, ratings and likes.
+An interactive web application that allows designers to post their works by uploading images, and collaborate with one another by receiving comments, ratings and likes.
 
 Live Demo:
 To see the app in action, [Heroku Link](https://design-share.herokuapp.com)
