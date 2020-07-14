@@ -44,7 +44,7 @@ or
 ```   
 # Built with
 - **Front-end**
-  - Ejs
+  - EJS
   - Bootstrap
   - Google Maps APIs
 
